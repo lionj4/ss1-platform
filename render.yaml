@@ -10,7 +10,8 @@ services:
     env: node
     plan: free
     rootDir: services/auth
-    buildCommand: npm install
+    buildCommand: npm install && cp ../../init.sql . && cp ../../init-vouchers.sql . && cp ../../db-init.js .
+    preDeployCommand: node db-init.js
     startCommand: node src/index.js
     envVars:
       - key: PORT
