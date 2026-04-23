@@ -1,13 +1,15 @@
-services:
-  - type: database
-    name: ss1-db
+databases:
+  - name: ss1-db
     databaseName: ss1_db
     user: ss1_user
     plan: free
-  - type: redis
-    name: ss1-redis
+
+redis:
+  - name: ss1-redis
     plan: free
     ipAllowList: []
+
+services:
   - type: web
     name: ss1-auth-service
     env: node
@@ -30,6 +32,7 @@ services:
         sync: false
       - key: JWT_REFRESH_SECRET
         sync: false
+
   - type: web
     name: ss1-affiliate-service
     env: node
@@ -50,6 +53,7 @@ services:
           property: connectionString
       - key: JWT_SECRET
         sync: false
+
   - type: web
     name: ss1-admin-service
     env: node
@@ -66,6 +70,7 @@ services:
           property: connectionString
       - key: JWT_SECRET
         sync: false
+
   - type: web
     name: ss1-gateway
     env: node
